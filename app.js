@@ -1,7 +1,6 @@
 'use strict';
 var express = require('express'),
-	app = express();
-	app.set('port', (process.env.PORT || 5000));
+	app = express(),
 	path = require('path'),
 	config = require('./config/config.js'),
 	mongoose = require('mongoose').connect(config.dbURL),
@@ -12,7 +11,7 @@ var express = require('express'),
 	rooms = [],
 	connectMongo = require('connect-mongo')(session);
 	
-
+app.set('port', (process.env.PORT || 5000));
 app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('hogan-express'));
 app.set('view engine', 'html');
