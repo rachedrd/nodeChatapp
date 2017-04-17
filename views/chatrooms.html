@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>ChatCat - Rooms</title>
+	<link rel="stylesheet" href="/css/roomsStyles.css">
+	<script src="/js/jquery-2.1.4.min.js"></script>
+	<script src="/js/jquery-2.1.4.min.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script>
+	$(function(){
+		var host = '{{config.host}}'; 
+		var socket = io.connect(host + '/roomlist');
+		socket.on('connect', function(){
+			console.log('connection estableshed ...');
+		});
+		socket.on('roomupdate', function(data){
+			var procData = JSON.parse(data);
+			$('.roomsList').html('');
+			for (var i = 0; i < procData.length ; i++) {
+				var str = '<a href="room/' + procData[i].room_number + '"><li>' +  procData[i].room_name + '</li></a>';
+				$('.roomsList').prepend(str);
+			};
+		})
+		$(document).on('click','#createBtn', function(){
+			var room_name = $('.newRoom').val();
+			console.log('room name : ' + room_name);
+			if(room_name != '')
+			{
+				var room_number = parseInt(Math.random()*10000);
+				socket.emit('newroom', { room_name: room_name, room_number: room_number	})
+				$('.newRoom').val('');
+			}
+		})
+	})
+	</script>
+</head>
+<body>
+	<div class="container">
+		<div class="titlePanel">
+			<h1>ChatCAT | Select or Create a Chatroom</h1>
+		</div>
+		<div class="controls">
+			<div class="userPicHolder"><img src="{{user.profilePIc}}" alt="John Doe"></div>
+			<p class="userName">{{user.fullname}}</p>
+			<a href="/logout" id="logOutBtn">Logout</a>
+		</div>
+		<div class="controls">
+			<input type="text" class="newRoom" name="roomName" placeholder="Create a new Chatroom">
+			<a href="#" id="createBtn">Create</a>
+		</div>
+		<div class="roomsListDiv">
+			<ul class="roomsList" id="roomsListUL">
+			<!-- Loop list items here -->
+				<!--<a href="chatroom.htm"><li>World Cuisine</li></a>
+				<a href="chatroom.htm"><li>Coffee and Conversations</li></a>-->
+			<!-- Loop ends -->
+			</ul>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,10 @@
+{
+	"dbURL": "mongodb://dev:dev@ds139969.mlab.com:39969/chatcatclone",
+	"sessionSecret": "hsjdgqshjds",
+	"facebook": 
+		{	"appID":"284848608605523",
+		 	"appSecret": "c1c2dc76a871891201a16e65e8124c73",
+			"callbackURL": "https://chatcatclone.herokuapp.com/auth/facebook/callabck"
+		},
+		"host": " https://stark-taiga-32163.herokuapp.com"
+}

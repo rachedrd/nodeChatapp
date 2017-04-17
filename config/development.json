@@ -1,0 +1,11 @@
+{
+	"dbURL": "mongodb://localhost:27017/chatcatclone",
+	"sessionSecret": "hsjdgqshjds",
+	"facebook": 
+		{	"appID":"284848608605523",
+		 	"appSecret": "c1c2dc76a871891201a16e65e8124c73",
+			"callbackURL": "http://localhost:3000/auth/facebook/callabck"
+		},
+	"host": "http://localhost:3000"
+
+}

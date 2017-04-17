@@ -2,7 +2,7 @@
 var express = require('express'),
 	app = express();
 	app.set('port', (process.env.PORT || 5000));
-	/*path = require('path'),
+	path = require('path'),
 	config = require('./config/config.js'),
 	mongoose = require('mongoose').connect(config.dbURL),
 	cookieParser = require('cookie-parser'),
@@ -44,8 +44,3 @@ var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
 require('./socket/socket.js')(io, rooms );
 server.listen(app.get('port'), ()=> {console.log('chatcat app running on prt: '+ app.get('port'));});
-*/
-
-app.route('/').get((req, res) => {
-	res.end('working app' + app.get('port'))});
-app.listen(app.get('port'), () => {console.log("working app");});
