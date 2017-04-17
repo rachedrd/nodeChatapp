@@ -18,6 +18,7 @@
 			var procData = JSON.parse(data);
 			$('.roomsList').html('');
 			for (var i = 0; i < procData.length ; i++) {
+				console.log(procData[i].room_number);
 				var str = '<a href="room/' + procData[i].room_number + '"><li>' +  procData[i].room_name + '</li></a>';
 				$('.roomsList').prepend(str);
 			};
@@ -25,11 +26,14 @@
 		$(document).on('click','#createBtn', function(){
 			var room_name = $('.newRoom').val();
 			console.log('room name : ' + room_name);
+			
+
 			if(room_name != '')
 			{
 				var room_number = parseInt(Math.random()*10000);
 				socket.emit('newroom', { room_name: room_name, room_number: room_number	})
 				$('.newRoom').val('');
+				console.log('room name : ' + room_number);
 			}
 		})
 	})
