@@ -1,0 +1,23 @@
+{
+  "name": "chatcatsteps",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "engines": {
+    "node": "6.10.2"
+  },
+  "scripts": {
+    "start": "node app.js"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+   "dependencies": {
+    "express": "4.13.3"
+  },
+
+  "author": "",
+  "license": "ISC"
+}

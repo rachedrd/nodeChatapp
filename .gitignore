@@ -1,0 +1,7 @@
+node_modules
+auth/*
+config/*
+public/*
+routes/*
+socket/*
+views/*
