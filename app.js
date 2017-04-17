@@ -1,6 +1,7 @@
 'use strict';
 var express = require('express'),
 	app = express();
+	app.set('port', (process.env.PORT || 5000));
 	/*path = require('path'),
 	config = require('./config/config.js'),
 	mongoose = require('mongoose').connect(config.dbURL),
@@ -44,7 +45,7 @@ var io = require('socket.io').listen(server);
 require('./socket/socket.js')(io, rooms );
 server.listen(app.get('port'), ()=> {console.log('chatcat app running on prt: '+ app.get('port'));});
 */
-app.set('port', (process.env.PORT || 5000));
+
 app.route('/').get((req, res) => {
-	res.end('working app')});
+	res.end('working app' + app.get('port'))});
 app.listen(app.get('port'), () => {console.log("working app");});
