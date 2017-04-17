@@ -44,6 +44,7 @@ var io = require('socket.io').listen(server);
 require('./socket/socket.js')(io, rooms );
 server.listen(app.get('port'), ()=> {console.log('chatcat app running on prt: '+ app.get('port'));});
 */
+app.set('port', (process.env.PORT || 5000));
 app.route('/').get((req, res) => {
 	res.end('working app')});
-app.listen(8080,"https://chatcatsteps.herokuapp.com", () => {console.log("working app");});
+app.listen(app.get('port'), () => {console.log("working app");});
